@@ -1,0 +1,1476 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>My Dream</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Wu Kaixing">
+    
+
+    
+    <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="My Dream">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="My Dream">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="My Dream">
+<meta name="twitter:description">
+
+    
+    <link rel="alternative" href="/atom.xml" title="My Dream" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/logo.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="My Dream" title="My Dream"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="My Dream">My Dream</a></h1>
+				<h2 class="blog-motto">Life isn&#39;t about waiting for the storm to pass,it&#39;s about learning to dance in the rain.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/18/事务隔离级别/" title="事务隔离级别" itemprop="url">事务隔离级别</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>4个等级的事务隔离级别，在相同数据环境下，使用相同的输入，执行相同的工作，根据不同的隔离级别，可以导致不同的结果。不同事务隔离级别能够解决的数据并发问题的能力是不同的。</p>
+<h2 id="SERIALIZABLE（串行化）"><a href="#SERIALIZABLE（串行化）" class="headerlink" title="SERIALIZABLE（串行化）"></a>SERIALIZABLE（串行化）</h2><ol>
+<li>不会出现任何并发问题，因为它是对同一数据的访问是串行的，非并发访问的；</li>
+<li>性能最差；</li>
+</ol>
+<h2 id="REPEATABLE-READ（可重复读）（MySQL）"><a href="#REPEATABLE-READ（可重复读）（MySQL）" class="headerlink" title="REPEATABLE READ（可重复读）（MySQL）"></a>REPEATABLE READ（可重复读）（MySQL）</h2><ol>
+<li>防止脏读和不可重复读，不能处理幻读问题；</li>
+<li>性能比SERIALIZABLE好</li>
+</ol>
+<h2 id="READ-COMMITTED（读已提交数据）（Oracle）"><a href="#READ-COMMITTED（读已提交数据）（Oracle）" class="headerlink" title="READ COMMITTED（读已提交数据）（Oracle）"></a>READ COMMITTED（读已提交数据）（Oracle）</h2><ol>
+<li>防止脏读，没有处理不可重复读，也没有处理幻读；</li>
+<li>性能比REPEATABLE READ好</li>
+</ol>
+<h2 id="READ-UNCOMMITTED（读未提交数据）"><a href="#READ-UNCOMMITTED（读未提交数据）" class="headerlink" title="READ UNCOMMITTED（读未提交数据）"></a>READ UNCOMMITTED（读未提交数据）</h2><ol>
+<li>可能出现任何事务并发问题</li>
+<li>性能最好</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/数据库/">数据库</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/MySQL/">MySQL</a><a href="/tags/事务/">事务</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/18/JVM的内存区域划分/" title="JVM的内存区域划分" itemprop="url">JVM的内存区域划分</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Java程序具体执行的过程"><a href="#Java程序具体执行的过程" class="headerlink" title="Java程序具体执行的过程"></a>Java程序具体执行的过程</h2><h2 id=""><a href="#" class="headerlink" title=""></a><center><img src="http://i.imgur.com/BFRwHuk.png" alt="Java程序具体执行的过程"><center></center></center></h2><ul>
+<li>首先Java源代码文件(.java后缀)会被Java编译器编译为字节码文件(.class后缀)</li>
+<li>由JVM中的类加载器加载各个类的字节码文件</li>
+<li>加载完毕之后，交由JVM执行引擎执行</li>
+<li>在整个程序执行过程中，JVM会用一段空间来存储程序执行期间需要用到的数据和相关信息，这段空间一般被称作为Runtime Data Area（运行时数据区），也就是我们常说的JVM内存。</li>
+<li>在Java中我们常常说到的内存管理就是针对这段空间进行管理（如何分配和回收内存空间）</li>
+</ul>
+<h2 id="运行时数据区包括哪几部分？"><a href="#运行时数据区包括哪几部分？" class="headerlink" title="运行时数据区包括哪几部分？"></a>运行时数据区包括哪几部分？</h2><ul>
+<li>根据《Java虚拟机规范》的规定，运行时数据区通常包括这几个部分：<ul>
+<li>程序计数器(Program Counter Register)</li>
+<li>Java栈(VM Stack)</li>
+<li>本地方法栈(Native Method Stack)</li>
+<li>方法区(Method Area)</li>
+<li>堆(Heap)<br><center><img src="http://i.imgur.com/5wHAar7.png" alt="运行时数据区"></center></li>
+</ul>
+</li>
+</ul>
+<h2 id="运行时数据区的每部分到底存储了哪些数据？"><a href="#运行时数据区的每部分到底存储了哪些数据？" class="headerlink" title="运行时数据区的每部分到底存储了哪些数据？"></a>运行时数据区的每部分到底存储了哪些数据？</h2><ul>
+<li><p>程序计数器</p>
+<ul>
+<li>Program Counter Register，也有称作为PC寄存器。</li>
+<li>在汇编语言中，程序计数器是指CPU中的寄存器，它保存的是程序当前执行的指令的地址（也可以说保存下一条指令的所在存储单元的地址），当CPU需要执行指令时，需要从程序计数器中得到当前需要执行的指令所在存储单元的地址，然后根据得到的地址获取到指令，在得到指令之后，程序计数器便自动加1或者根据转移指针得到下一条指令的地址，如此循环，直至执行完所有的指令。</li>
+<li>虽然JVM中的程序计数器并不像汇编语言中的程序计数器一样是物理概念上的CPU寄存器，但是JVM中的程序计数器的功能跟汇编语言中的程序计数器的功能在逻辑上是等同的，也就是说是用来指示执行哪条指令的。</li>
+<li>由于在JVM中，多线程是通过线程轮流切换来获得CPU执行时间的，因此，在任一具体时刻，一个CPU的内核只会执行一条线程中的指令，因此，为了能够使得每个线程都在线程切换后能够恢复在切换之前的程序执行位置，每个线程都需要有自己独立的程序计数器，并且不能互相被干扰，否则就会影响到程序的正常执行次序。因此，可以这么说，程序计数器是每个线程所私有的。</li>
+<li>在JVM规范中规定，如果线程执行的是非native方法，则程序计数器中保存的是当前需要执行的指令的地址；如果线程执行的是native方法，则程序计数器中的值是undefined。</li>
+<li>由于程序计数器中存储的数据所占空间的大小不会随程序的执行而发生改变，因此，对于程序计数器是不会发生内存溢出现象(OutOfMemory)的。</li>
+<li>线程私有</li>
+</ul>
+</li>
+<li><p>Java栈</p>
+<ul>
+<li>虚拟机栈（Java Vitual Machine Stack），也就是我们常常所说的栈。</li>
+<li>Java栈是Java方法执行的内存模型。</li>
+<li>Java栈中存放的是一个个的栈帧，每个栈帧对应一个被调用的方法，在栈帧中包括：<ul>
+<li>局部变量表(Local Variables)</li>
+<li>操作数栈(Operand Stack)</li>
+<li>指向当前方法所属的类的运行时常量池的引用(Reference to runtime constant pool)</li>
+<li>方法返回地址(Return Address)</li>
+<li>一些额外的附加信息</li>
+</ul>
+</li>
+<li>当执行一个方法时，就会随之创建一个对应的栈帧，并将建立的栈帧压栈。当线程方法执行完毕之后，便会将栈帧出栈。</li>
+<li>因此可知，线程当前执行的方法所对应的栈帧必定位于Java栈的顶部。</li>
+<li>所以在使用递归方法的时候容易导致栈内存溢出的现象以及栈区的空间不用程序员去管理。</li>
+<li>对于所有的程序设计语言来说，栈这部分空间对程序员来说是不透明的。</li>
+<li>以下是一个Java栈的模型：<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><center><img src="http://i.imgur.com/8FZi2vE.png" alt="stack"></center></h2><ul>
+<li>局部变量表，就是用来存储方法中的局部变量（包括在方法中声明的非静态变量以及函数形参）。对于基本数据类型的变量，则直接存储它的值，对于引用类型的变量，则存的是指向对象的引用。局部变量表的大小在编译器就可以确定其大小了，因此在程序执行期间局部变量表的大小是不会改变的。</li>
+<li>操作数栈，栈最典型的一个应用就是用来对表达式求值。想想一个线程执行方法的过程中，实际上就是不断执行语句的过程，而归根到底就是进行计算的过程。因此可以这么说，程序中的所有计算过程都是在借助于操作数栈来完成的。</li>
+<li>指向运行时常量池的引用，因为在方法执行的过程中有可能需要用到类中的常量，所以必须要有一个引用指向运行时常量。</li>
+<li>方法返回地址，当一个方法执行完毕之后，要返回之前调用它的地方，因此在栈帧中必须保存一个方法返回地址。</li>
+</ul>
+</li>
+<li>由于每个线程正在执行的方法可能不同，因此每个线程都会有一个自己的Java栈，互不干扰。</li>
+<li>线程私有</li>
+</ul>
+</li>
+<li>本地方法栈<ul>
+<li>本地方法栈与Java栈的作用和原理非常相似。</li>
+<li>区别只不过是Java栈是为执行Java方法服务的，而本地方法栈则是为执行本地方法（Native Method）服务的。</li>
+<li>在JVM规范中，并没有对本地方发展的具体实现方法以及数据结构作强制规定，虚拟机可以自由实现它。在HotSopt虚拟机中直接就把本地方法栈和Java栈合二为一。</li>
+</ul>
+</li>
+<li>堆<ul>
+<li>在C语言中，堆这部分空间是唯一一个程序员可以管理的内存区域。程序员可以通过malloc函数和free函数在堆上申请和释放空间。</li>
+<li>Java中的堆是用来存储对象本身的以及数组（当然，数组引用是存放在Java栈中的）。只不过和C语言中的不同，在Java中，程序员基本不用去关心空间释放的问题，Java的垃圾回收机制会自动进行处理。因此这部分空间也是Java垃圾收集器管理的主要区域。</li>
+<li>在JVM中只有一个堆</li>
+<li>线程共享</li>
+</ul>
+</li>
+<li>方法区<ul>
+<li>存储每个类的信息（包括类的名称、方法信息、字段信息）、静态变量、常量以及编译器编译后的代码</li>
+<li>在Class文件中除了类的字段、方法、接口等描述信息外，还有一项信息是常量池，用来存储编译期间生成的字面量和符号引用。</li>
+<li>重要的部分就是运行时常量池，它是每一个类或接口的常量池的运行时表示形式，在类和接口被加载到JVM后，对应的运行时常量池就被创建出来。当然并非Class文件常量池中的内容才能进入运行时常量池，在运行期间也可将新的常量放入运行时常量池中，比如String的intern方法。重要的部分就是运行时常量池，它是每一个类或接口的常量池的运行时表示形式，在类和接口被加载到JVM后，对应的运行时常量池就被创建出来。当然并非Class文件常量池中的内容才能进入运行时常量池，在运行期间也可将新的常量放入运行时常量池中，比如String的intern方法。</li>
+<li>在JVM规范中，没有强制要求方法区必须实现垃圾回收。很多人习惯将方法区称为“永久代”，是因为HotSpot虚拟机以永久代来实现方法区，从而JVM的垃圾收集器可以像管理堆区一样管理这部分区域，从而不需要专门为这部分设计垃圾回收机制。不过自从JDK7之后，Hotspot虚拟机便将运行时常量池从永久代移除了。</li>
+<li>线程共享</li>
+</ul>
+</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java/">Java</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/JVM/">JVM</a><a href="/tags/内存区域/">内存区域</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/18/hashmap的实现/" title="HashMap实现原理" itemprop="url">HashMap实现原理</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ul>
+<li>结合数组和链表的特性，做出的一种寻址容易，插入删除也容易的数据结构——哈希表</li>
+<li>最常用的——拉链法，即“链表的数组”</li>
+<li><img src="http://i.imgur.com/i8wqylC.png" alt="哈希表数据结构"></li>
+<li>HashMap其实也是一个线性的数组实现的,所以可以理解为其存储数据的容器就是一个线性数组。这可能让我们很不解，一个线性的数组怎么实现按键值对来存取数据呢？这里HashMap有做一些处理。</li>
+<li>首先HashMap里面实现一个静态内部类Entry，其重要的属性有 key , value, next，从属性key,value我们就能很明显的看出来Entry就是HashMap键值对实现的一个基础bean</li>
+<li>我们上面说到HashMap的基础就是一个线性数组，这个数组就是Entry[]，Map里面的内容都保存在Entry[]里面。</li>
+</ul>
+<h2 id="HashMap的存取实现"><a href="#HashMap的存取实现" class="headerlink" title="HashMap的存取实现"></a>HashMap的存取实现</h2><ul>
+<li><p>HashMap使用的小算法</p>
+<pre><code>//存储时:
+int hash = key.hashCode();
+int index = hash % Entry[].length;
+Entry[index] = value;
+
+//取值时:
+int hash = key.hashCode();
+int index = hash % Entry[].length;
+return Entry[index];
+</code></pre></li>
+<li>如果两个key通过hash%Entry[].length得到的index相同，会不会有覆盖的危险？<ul>
+<li>不会。Entry类里面有一个next属性，作用是指向下一个Entry。</li>
+<li>index=i的地方可以存储多个键值对,他们通过next这个属性链接在一起。</li>
+<li>数组中存储的是新插入的元素，链表头</li>
+</ul>
+</li>
+<li>优化<ul>
+<li>Entry[]的长度一定后，随着map里面数据的越来越长，这样同一个index的链就会很长，会不会影响性能？<ul>
+<li>HashMap里面设置一个因素（也称为因子），随着map的size越来越大，Entry[]会以一定的规则加长长度。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="解决hash冲突的办法"><a href="#解决hash冲突的办法" class="headerlink" title="解决hash冲突的办法"></a>解决hash冲突的办法</h2><ol>
+<li>开放定址法（线性探测再散列，二次探测再散列，伪随机探测再散列)</li>
+<li>再哈希法</li>
+<li>链地址法</li>
+<li>建立一个公共溢出区</li>
+</ol>
+<ul>
+<li>Java中HashMap的解决办法就是采用的链地址法。</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java/">Java</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/HashMap/">HashMap</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/18/linux系统进程间通信的方式/" title="linux系统进程间通信的方式" itemprop="url">linux系统进程间通信的方式</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="管道-pipe-："><a href="#管道-pipe-：" class="headerlink" title="管道( pipe )："></a>管道( pipe )：</h2><ul>
+<li>一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。</li>
+</ul>
+<h2 id="命名管道-named-pipe-："><a href="#命名管道-named-pipe-：" class="headerlink" title="命名管道 (named pipe) ："></a>命名管道 (named pipe) ：</h2><ul>
+<li>半双工的通信方式，但是它允许无亲缘关系进程间的通信。</li>
+</ul>
+<h2 id="信号量-semophore-："><a href="#信号量-semophore-：" class="headerlink" title="信号量( semophore ) ："></a>信号量( semophore ) ：</h2><ul>
+<li>信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源</li>
+<li>因此，主要作为进程间以及同一进程内不同线程之间的同步手段</li>
+</ul>
+<h2 id="消息队列-message-queue-："><a href="#消息队列-message-queue-：" class="headerlink" title="消息队列( message queue ) ："></a>消息队列( message queue ) ：</h2><ul>
+<li>消息队列是由消息的链表，存放在内核中并由消息队列标识符标识。</li>
+<li>消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点。</li>
+</ul>
+<h2 id="信号-sinal-："><a href="#信号-sinal-：" class="headerlink" title="信号 ( sinal ) ："></a>信号 ( sinal ) ：</h2><ul>
+<li>信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生。</li>
+</ul>
+<h2 id="共享内存-shared-memory-："><a href="#共享内存-shared-memory-：" class="headerlink" title="共享内存( shared memory ) ："></a>共享内存( shared memory ) ：</h2><ul>
+<li>共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的 IPC 方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号量，配合使用，来实现进程间的同步和通信。</li>
+</ul>
+<h2 id="套接字-socket-："><a href="#套接字-socket-：" class="headerlink" title="套接字( socket ) ："></a>套接字( socket ) ：</h2><ul>
+<li>套接口也是一种进程间通信机制，与其他通信机制不同的是，它可用于不同主机间的进程通信。</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Linux/">Linux</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Linux/">Linux</a><a href="/tags/进程通信/">进程通信</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/18/JVM类加载过程/" title="JVM类加载过程" itemprop="url">JVM类加载过程</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="类从加载到虚拟机到卸载"><a href="#类从加载到虚拟机到卸载" class="headerlink" title="类从加载到虚拟机到卸载"></a>类从加载到虚拟机到卸载</h2><ul>
+<li>整个生命周期包括：<ul>
+<li>加载（Loading）</li>
+<li>连接（Linking）<ul>
+<li>验证（Validation）</li>
+<li>准备（Preparation）</li>
+<li>解析（Resolution）</li>
+</ul>
+</li>
+<li>初始化（Initialization）</li>
+<li>使用（Using）</li>
+<li>卸载（Unloading）</li>
+</ul>
+</li>
+</ul>
+<h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><ul>
+<li>虚拟机主要完成三件事<ol>
+<li>通过一个类的全限定名来获取定义此类的二进制字节流</li>
+<li>将这个字节流所代表的静态存储结构转化为方法区域的运行时数据结构</li>
+<li>在Java堆中生成一个代表这个类的java.lang.Class对象，作为方法区域数据的访问入口</li>
+</ol>
+</li>
+</ul>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><ul>
+<li>作用<ul>
+<li>保证Class文件的字节流包含的信息符合JVM规范，不会给JVM造成危害</li>
+<li>如果验证失败，就会抛出一个java.lang.VerifyError异常或其子类异常</li>
+</ul>
+</li>
+<li>四个阶段<ol>
+<li>文件格式验证：验证字节流文件是否符合Class文件格式的规范，并且能被当前虚拟机正确的处理</li>
+<li>元数据验证：是对字节码描述的信息进行语义分析，以保证其描述的信息符合Java语言的规范</li>
+<li>字节码验证：主要是进行数据流和控制流的分析，保证被校验类的方法在运行时不会危害虚拟机。</li>
+<li>符号引用验证：符号引用验证发生在虚拟机将符号引用转化为直接引用的时候，这个转化动作将在解析阶段中发生</li>
+</ol>
+</li>
+</ul>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
+<li>为变量分配内存并设置类变量的初始化</li>
+<li>在这个阶段分配的仅为类的变量（static修饰的变量），而不包括类的实例变量。对已非final的变量，JVM会将其设置成“零值”，而不是其赋值语句的值：<pre><code>pirvate static int size = 10;
+</code></pre>那么在这个阶段，size的值为0，而不是10。final修饰的类变量将会赋值成真实的值。</li>
+</ul>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ul>
+<li>将常量池内的符号引用替换成直接引用</li>
+<li>主要包括四种类型引用的解析：<ul>
+<li>类或接口的解析</li>
+<li>字段解析</li>
+<li>方法解析</li>
+<li>接口方法解析。</li>
+</ul>
+</li>
+</ul>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><ul>
+<li>在准备阶段，类变量已经经过一次初始化了</li>
+<li>在这个阶段，则是根据程序员通过程序制定的计划去初始化类的变量和其他资源。这些资源有static{}块，构造函数，父类的初始化等</li>
+<li>直到初始化阶段，才真正开始执行类中定义的Java程序代码</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java/">Java</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/JVM/">JVM</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/18/wait_notify/" title="Java的wait(), notify()和notifyAll()" itemprop="url">Java的wait(), notify()和notifyAll()</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="官方解释"><a href="#官方解释" class="headerlink" title="官方解释"></a>官方解释</h2><ul>
+<li>wait(),notify()和notifyAll()都是java.lang.Object的方法：</li>
+<li>wait(): Causes the current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object.</li>
+<li>notify(): Wakes up a single thread that is waiting on this object’s monitor.</li>
+<li>notifyAll(): Wakes up all threads that are waiting on this object’s monitor.<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2></li>
+<li>实现线程间阻塞(Blocking)</li>
+<li>控制进程内调度(inter-process communication)</li>
+</ul>
+<h2 id="调用前提"><a href="#调用前提" class="headerlink" title="调用前提"></a>调用前提</h2><ul>
+<li>必须先获得锁</li>
+<li>必须锁定该对象</li>
+</ul>
+<h2 id="不获得锁会怎样"><a href="#不获得锁会怎样" class="headerlink" title="不获得锁会怎样"></a>不获得锁会怎样</h2><pre><code>public static void main(String[] args) throws InterruptedException {
+    Object obj = new Object();
+    obj.wait();
+    obj.notifyAll();
+}
+</code></pre><ul>
+<li>抛出java.lang.IllegalMonitorStateException的异常</li>
+</ul>
+<h2 id="不获得该对象的锁会怎样"><a href="#不获得该对象的锁会怎样" class="headerlink" title="不获得该对象的锁会怎样"></a>不获得该对象的锁会怎样</h2><pre><code>    public static void main(String[] args) throws InterruptedException {
+        Object obj = new Object();
+        Object lock = new Object();
+        synchronized (lock) {
+            obj.wait();
+            obj.notifyAll();
+    }
+}
+</code></pre><ul>
+<li>抛出java.lang.IllegalMonitorStateException的异常</li>
+</ul>
+<h2 id="为什么必须获得该对象的锁"><a href="#为什么必须获得该对象的锁" class="headerlink" title="为什么必须获得该对象的锁"></a>为什么必须获得该对象的锁</h2><ul>
+<li>没有锁，wait和notify有可能会产生竞态条件(Race Condition)</li>
+<li>所以，JVM通过在执行的时候抛出IllegalMonitorStateException的异常，来确保wait, notify时，获得了对象的锁，从而消除隐藏的Race Condition。</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java/">Java</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/wait/">wait</a><a href="/tags/notify/">notify</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/18/Hashtable与ConcurrentHashMap区别/" title="Hashtable与ConcurrentHashMap区别" itemprop="url">Hashtable与ConcurrentHashMap区别</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="ConcurrentHashMap的特点"><a href="#ConcurrentHashMap的特点" class="headerlink" title="ConcurrentHashMap的特点"></a>ConcurrentHashMap的特点</h2><ul>
+<li><p>融合了Hashtable和HashMap二者的优势。</p>
+<ul>
+<li>Hashtable是做了同步的</li>
+<li>HashMap未考虑同步。</li>
+<li>HashMap在单线程情况下效率较高</li>
+<li>Hashtable在的多线程情况下，同步操作能保证程序执行的正确性</li>
+</ul>
+</li>
+<li><p>Hashtable每次同步执行的时候都要锁住整个结构</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><center><img src="http://i.imgur.com/AAFLQpc.jpg" alt="Hashtable与ConcurrentHashMap的锁结构"></center></h2></li>
+<li>ConcurrentHashMap正是为了解决这个问题而诞生的</li>
+<li>ConcurrentHashMap锁的方式是稍微细粒度的。 ConcurrentHashMap将hash表分为16个桶（默认值），诸如get,put,remove等常用操作只锁当前需要用到的桶。</li>
+<li>试想，原来只能一个线程进入，现在却能同时16个写线程进入（写线程才需要锁定，而读线程几乎不受限制，之后会提到），并发性的提升是显而易见的。</li>
+</ul>
+<h2 id="ConcurrentHashMap的迭代方式"><a href="#ConcurrentHashMap的迭代方式" class="headerlink" title="ConcurrentHashMap的迭代方式"></a>ConcurrentHashMap的迭代方式</h2><ul>
+<li>使用了不同于传统集合的快速失败迭代器的另一种迭代方式，我们称为弱一致迭代器。</li>
+<li>在这种迭代方式中，当iterator被创建后集合再发生改变就不再是抛出 ConcurrentModificationException，取而代之的是在改变时new新的数据从而不影响原有的数据，iterator完成后再将头指针替换为新的数据</li>
+<li>这样iterator线程可以使用原来老的数据，而写线程也可以并发的完成改变，更重要的，这保证了多个线程并发执行的连续性和扩展性，是性能提升的关键。</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java/">Java</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/Hashtable/">Hashtable</a><a href="/tags/ConcurrentHashMap/">ConcurrentHashMap</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/18/MySQL数据库三种常用存储引擎特性对比/" title="MySQL数据库三种常用存储引擎特性对比" itemprop="url">MySQL数据库三种常用存储引擎特性对比</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="什么叫存储引擎？"><a href="#什么叫存储引擎？" class="headerlink" title="什么叫存储引擎？"></a>什么叫存储引擎？</h2><ul>
+<li>MySQL中的数据用各种不同的技术存储在文件（或内存）中，这些技术中的每一种技术都使用不同的存储机制，索引技巧，锁定水平并且最终提供广泛的不同功能和能力。</li>
+<li>在MySQL中将这些不同的技术及配套的相关功能称为存储引擎。</li>
+</ul>
+<h2 id="MySQL存储引擎特点"><a href="#MySQL存储引擎特点" class="headerlink" title="MySQL存储引擎特点"></a>MySQL存储引擎特点</h2><ul>
+<li>不仅可以同时使用多种存储引擎，</li>
+<li>而且每种存储引擎和MySQL之间使用插件方式这种非常松的耦合关系。</li>
+</ul>
+<h2 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h2><ul>
+<li>特性：<ul>
+<li>不支持事务：MyISAM存储引擎不支持事务，所以对事务有要求的业务场景不能使用</li>
+<li>表级锁定：其锁定机制是表级索引，这虽然可以让锁定的实现成本很小但是也同时大大降低了其并发性能</li>
+<li>读写互相阻塞：不仅会在写入的时候阻塞读取，MyISAM还会在读取的时候阻塞写入，但读本身并不会阻塞另外的读</li>
+<li>只会缓存索引：MyISAM可以通过key_buffer缓存以大大提高访问性能减少磁盘IO，但是这个缓存区只会缓存索引，而不会缓存数据</li>
+</ul>
+</li>
+<li>适用场景<ul>
+<li>不需要事务支持（不支持）</li>
+<li>并发相对较低（锁定机制问题）</li>
+<li>数据修改相对较少（阻塞问题）</li>
+<li>以读为主</li>
+<li>数据一致性要求不是非常高</li>
+</ul>
+</li>
+<li>最佳实践<ul>
+<li>尽量索引（缓存机制）</li>
+<li>调整读写优先级，根据实际需求确保重要操作更优先</li>
+<li>启用延迟插入改善大批量写入性能</li>
+<li>尽量顺序操作让insert数据都写入到尾部，减少阻塞</li>
+<li>分解大的操作，降低单个操作的阻塞时间</li>
+<li>降低并发数，某些高并发场景通过应用来进行排队机制</li>
+<li>对于相对静态的数据，充分利用Query Cache可以极大的提高访问效率</li>
+<li>MyISAM的Count只有在全表扫描的时候特别高效，带有其他条件的count都需要进行实际的数据访问</li>
+</ul>
+</li>
+</ul>
+<h2 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h2><ul>
+<li>特性<ul>
+<li>具有较好的事务支持：支持4个事务隔离级别，支持多版本读</li>
+<li>行级锁定：通过索引实现，全表扫描仍然会是表锁，注意间隙锁的影响</li>
+<li>读写阻塞与事务隔离级别相关</li>
+<li>具有非常高效的缓存特性：能缓存索引，也能缓存数据</li>
+<li>整个表和主键以Cluster方式存储，组成一颗平衡树</li>
+<li>所有Secondary Index都会保存主键信息</li>
+</ul>
+</li>
+<li>适用场景<ul>
+<li>需要事务支持（具有较好的事务特性）</li>
+<li>行级锁定对高并发有很好的适应能力，但需要确保查询是通过索引完成</li>
+<li>数据更新较为频繁的场景</li>
+<li>数据一致性要求较高</li>
+<li>硬件设备内存较大，可以利用InnoDB较好的缓存能力来提高内存利用率，尽可能减少磁盘 IO</li>
+</ul>
+</li>
+<li>最佳实践<ul>
+<li>主键尽可能小，避免给Secondary index带来过大的空间负担</li>
+<li>避免全表扫描，因为会使用表锁</li>
+<li>尽可能缓存所有的索引和数据，提高响应速度</li>
+<li>在大批量小插入的时候，尽量自己控制事务而不要使用autocommit自动提交</li>
+<li>合理设置innodb_flush_log_at_trx_commit参数值，不要过度追求安全性</li>
+<li>避免主键更新，因为这会带来大量的数据移动</li>
+</ul>
+</li>
+</ul>
+<h2 id="NDBCluster"><a href="#NDBCluster" class="headerlink" title="NDBCluster"></a>NDBCluster</h2><ul>
+<li>特性<ul>
+<li>分布式：分布式存储引擎，可以由多个NDBCluster存储引擎组成集群分别存放整体数据的一部分</li>
+<li>支持事务：和Innodb一样，支持事务</li>
+<li>可与mysqld不在一台主机：可以和mysqld分开存在于独立的主机上，然后通过网络和mysqld通信交互</li>
+<li>内存需求量巨大：新版本索引以及被索引的数据必须存放在内存中，老版本所有数据和索引必须存在与内存中</li>
+</ul>
+</li>
+<li>适用场景<ul>
+<li>具有非常高的并发需求</li>
+<li>对单个请求的响应并不是非常的critical</li>
+<li>查询简单，过滤条件较为固定，每次请求数据量较少，又不希望自己进行水平Sharding</li>
+</ul>
+</li>
+<li>最佳实践<ul>
+<li>尽可能让查询简单，避免数据的跨节点传输</li>
+<li>尽可能满足SQL节点的计算性能，大一点的集群SQL节点会明显多余Data节点</li>
+<li>在各节点之间尽可能使用万兆网络环境互联，以减少数据在网络层传输过程中的延时<br>注：以上三个存储引擎是目前相对主流的存储引擎，还有其他类似如：Memory，Merge，CSV，Archive等存储引擎的使用场景都相对较少。</li>
+</ul>
+</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/数据库/">数据库</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/数据库/">数据库</a><a href="/tags/MySQL/">MySQL</a><a href="/tags/存储引擎/">存储引擎</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/18/JVM如何GC/" title="JVM如何GC" itemprop="url">JVM如何GC</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="管理对象"><a href="#管理对象" class="headerlink" title="管理对象"></a>管理对象</h2><ul>
+<li>引用技术算法<ul>
+<li>给对象中添加一个引用计数器，每当有一个地方引用它时，计数器的值就加1</li>
+<li>当引用失效时，计数器的值就减1，任何时刻计数器为0的对象就是不可能在被使用了</li>
+<li>这种算法是很简单的，而且早期很多面向对象语言中都采用这种方式，但是现在主流的Java虚拟机中并没有采用这种方式来管理对象，其原因最主要的原因是它很难解决对象之间的相互循环引用。</li>
+</ul>
+</li>
+<li>可达性分析算法<ul>
+<li>通过一系列的称谓“GC Roots”的对象作为起始点</li>
+<li>从这些节点开始向下搜索，搜索所有走过的路径为引用链，当一个对象到GC Roots没有任何引用链项链时，则证明此对象时不可用的!<img src="http://i.imgur.com/UNIdlxb.jpg" alt="gc"></li>
+<li>上面的这张图，对象object5、object6、object7虽然互相没有关联，但是它们到GC Roots是不可达的，所以它们将会被判定为是可回收的对象</li>
+</ul>
+</li>
+<li>注意：Java语言中，可作为GC Roots的对象包括下面几种：<ol>
+<li>虚拟机栈(栈帧中的本地变量表)中引用的对象</li>
+<li>方法区中类静态属性引用的对象</li>
+<li>方法区中常量引用的对象</li>
+<li>本地方法栈中JNI(即一般说的Native方法)引用的对象<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2></li>
+</ol>
+</li>
+<li>在程序运行过程当中，会创建大量的对象，这些对象，大部分是短周期的对象，小部分是长周期的对象</li>
+<li>对于短周期的对象，需要频繁地进行垃圾回收以保证无用对象尽早被释放掉</li>
+<li>对于长周期对象，则不需要频繁垃圾回收以确保不进行无谓地垃圾扫描检测。为解决这种矛盾，JVM的内存管理采用分代的策略：<ul>
+<li>年轻代(Young Gen)：<ul>
+<li>存放新创建的对象</li>
+<li>内存大小相对会比较小，垃圾回收会比较频繁</li>
+<li>年轻代分成1个Eden Space和2个Suvivor Space（命名为A和B）<br>当对象在堆创建时，将进入年轻代的Eden Space。垃圾回收器进行垃圾回收时，扫描Eden Space和A Suvivor Space，如果对象仍然存活，则复制到B Suvivor Space，如果B Suvivor Space已经满，则复制 Old Gen。扫描A Suvivor Space时，如果对象已经经过了几次的扫描仍然存活，JVM认为其为一个Old对象，则将其移到Old Gen。扫描完毕后，JVM将Eden Space和A Suvivor Space清空，然后交换A和B的角色（即下次垃圾回收时会扫描Eden Space和BSuvivor Space。</li>
+<li>Young Gen垃圾回收时，采用将存活对象复制到到空的Suvivor Space的方式来确保不存在内存碎片，采用空间换时间的方式来加速内存垃圾回收。</li>
+</ul>
+</li>
+<li>年老代(Tenured Gen)：<ul>
+<li>JVM认为比较old的对象（经过几次的Young Gen的垃圾回收后仍然存在）</li>
+<li>内存大小相对会比较大，垃圾回收也相对没有那么频繁（比如可能几个小时一次）</li>
+<li>年老代主要采用压缩的方式来避免内存碎片（将存活对象移动到内存片的一边），当然，有些垃圾回收器（比如CMS垃圾回收器）出于效率的原因，可能会不进行压缩。</li>
+</ul>
+</li>
+<li>持久代(Perm Gen)：<ul>
+<li>存放类定义、字节码和常量等很少会变更的信息</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="造成full-gc的原因"><a href="#造成full-gc的原因" class="headerlink" title="造成full gc的原因"></a>造成full gc的原因</h1><ul>
+<li>new了很多对象,没有即时在主动释放掉-&gt;Eden内存不够用-&gt;不断把对象往old迁移-&gt;old满了-&gt;full gc</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java/">Java</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/GC/">GC</a><a href="/tags/JVM/">JVM</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/03/18/排序算法/" title="排序算法稳定性" itemprop="url">排序算法稳定性</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T12:43:46.000Z" itemprop="datePublished"> 发表于 2016-03-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>排序前后两个相等的数相对位置不变，则稳定</li>
+</ul>
+<h2 id="稳定性的好处"><a href="#稳定性的好处" class="headerlink" title="稳定性的好处"></a>稳定性的好处</h2><ul>
+<li>从一个键上排序，然后再从另一个键上排序，第一个键排序的结果可以为第二个键排序所用</li>
+</ul>
+<h2 id="各排序算法的稳定性"><a href="#各排序算法的稳定性" class="headerlink" title="各排序算法的稳定性"></a>各排序算法的稳定性</h2><ul>
+<li>堆排序、快速排序、希尔排序、直接选择排序不是稳定的排序算法</li>
+<li>基数排序、冒泡排序、直接插入排序、折半插入排序、归并排序是稳定的排序算法</li>
+</ul>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><ul>
+<li>小的元素往前调或者把大的元素往后调</li>
+<li>比较是相邻的两个元素比较，交换也发生在这两个元素之间</li>
+<li>稳定排序算法</li>
+</ul>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><ul>
+<li>每个位置选择当前元素最小的</li>
+<li>在一趟选择中，如果当前元素比一个元素小，而该小的元素又出现在一个和当前元素相等的元素后面，那么交换后稳定性就被破坏了。</li>
+<li>举个例子，序列5 8 5 2 9， 我们知道第一遍选择第1个元素5会和2交换，那么原序列中2个5的相对前后顺序就被破坏了</li>
+<li>不稳定的排序算法</li>
+</ul>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><ul>
+<li>已经有序的小序列的基础上，一次插入一个元素</li>
+<li>想要插入的元素和已经有序的最大者开始比起，如果比它大则直接插入在其后面，否则一直往前找直到找到它该插入的位置</li>
+<li>如果碰见一个和插入元素相 等的，那么插入元素把想插入的元素放在相等元素的后面</li>
+<li>相等元素的前后顺序没有改变</li>
+<li>稳定排序算法</li>
+</ul>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><ul>
+<li>两个方向，左边的i下标一直往右走，当a[i] &lt;= a[center_index]，其中center_index是中枢元素的数组下标，一般取为数组第0个元素。而右边的j下标一直往左走，当a[j] &gt; a[center_index]</li>
+<li>如果i和j都走不动了，i &lt;= j, 交换a[i]和a[j],重复上面的过程，直到i&gt;j</li>
+<li>交换a[j]和a[center_index]，完成一趟快速排序</li>
+<li>在中枢元素和a[j]交换的时候，很有可能把前面的元素的稳定性打乱，比如序列为 5 3 3 4 3 8 9 10 11， 现在中枢元素5和3(第5个元素，下标从1开始计)交换就会把元素3的稳定性打乱</li>
+<li>不稳定发生在中枢元素和a[j] 交换的时刻</li>
+<li>不稳定的排序算法</li>
+</ul>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><ul>
+<li>把序列递归地分成短序列，递归出口是短序列只有1个元素(认为直接有序)或者2个序列(1次比较和交换),然后把各个有序的短序列合并成一个有序的长序列，不断合并直到原序列全部排好序</li>
+<li>合并过程中我们可以保证如果两个当前元素相等时，我们把处在前面的序列的元素保存在结 果序列的前面，这样就保证了稳定性</li>
+<li>稳定排序算法</li>
+</ul>
+<h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><ul>
+<li>按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位</li>
+<li>有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优 先级排序，最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前</li>
+<li>用于整数</li>
+<li>需要较多的存储空间</li>
+<li>基于分别排序，分别收集</li>
+<li>稳定排序算法</li>
+</ul>
+<h2 id="希尔排序-shell"><a href="#希尔排序-shell" class="headerlink" title="希尔排序(shell)"></a>希尔排序(shell)</h2><ul>
+<li>按照不同步长对元素进行插入排序</li>
+<li>当刚开始元素很无序的时候，步长最大，所以插入排序的元素个数很少，速度很快</li>
+<li>当元素基本有序了，步长很小， 插入排序对于有序的序列效率很高</li>
+<li>所以，希尔排序的时间复杂度会比o(n^2)好一些</li>
+<li>由于多次插入排序，我们知道一次插入排序是稳定的，不会改变相同元 素的相对顺序，但在不同的插入排序过程中，相同的元素可能在各自的插入排序中移动，最后其稳定性就会被打乱</li>
+<li>不稳定的排序算法</li>
+</ul>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><ul>
+<li>是选择排序的一种</li>
+<li>堆的结构是节点i的孩子为2*i和2*i+1节点，大顶堆要求父节点大于等于其2个子节点，小顶堆要求父节点小于等于其2个子节点，是完全二叉树</li>
+<li>在一个长为n 的序列，堆排序的过程是从第n/2开始和其子节点共3个值选择最大(大顶堆)或者最小(小顶堆),这3个元素之间的选择当然不会破坏稳定性。但当为n /2-1, n/2-2, …1这些个父节点选择元素时，就会破坏稳定性。有可能第n/2个父节点交换把后面一个元素交换过去了，而第n/2-1个父节点把后面一个相同的元素没 有交换，那么这2个相同的元素之间的稳定性就被破坏了</li>
+<li>不稳定的排序算法</li>
+</ul>
+<h2 id="各排序算法的优劣"><a href="#各排序算法的优劣" class="headerlink" title="各排序算法的优劣"></a>各排序算法的优劣</h2><p><img src="http://i.imgur.com/fBsl3YM.png" alt="排序算法比较"></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/排序/">排序</a><a href="/tags/算法/">算法</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix">
+    <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
+  </nav>
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="leftwukaixing" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SSH框架/" title="SSH框架">SSH框架<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法/" title="算法">算法<sup>13</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程模型/" title="编程模型">编程模型<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/网络/" title="网络">网络<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>23</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/排序/" title="排序">排序<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JVM/" title="JVM">JVM<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/链表/" title="链表">链表<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/框架/" title="框架">框架<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Struts2/" title="Struts2">Struts2<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/集合/" title="集合">集合<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/算法/" title="算法">算法<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/树/" title="树">树<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/二叉树/" title="二叉树">二叉树<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/查找/" title="查找">查找<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/线程/" title="线程">线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/线程池/" title="线程池">线程池<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/并发/" title="并发">并发<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/引用/" title="引用">引用<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/编程模型/" title="编程模型">编程模型<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/计算框架/" title="计算框架">计算框架<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/并行计算/" title="并行计算">并行计算<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/leftwukaixing" target="_blank" title="My CSDN Blog">My CSDN Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=5263214599&verifier=03b040cc&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Wu Kaixing in China. <br/>
+			This is my blog, believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/5263214599" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/leftwukaixing" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:leftwukaixing@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Wu Kaixing">Wu Kaixing</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>

@@ -1,0 +1,482 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>JMX 获取MBean信息 | My Dream</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Wu Kaixing">
+    
+
+    
+    <meta name="description" content="###  我们都知道JDK里边自带的 jmap 命令可以获取到 JVM 的内存信息。为了事实监控 JVM 的状态，需要在一定的周期内持续获取数据。 通过搜索，知道了 JMX（Java Management Extensions） JMX下载地址 jmx_example.zip下载地址  解压 jmx_example.zip： unzip jmx_examples.zip  编译com/exampl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JMX 获取MBean信息">
+<meta property="og:url" content="http://yoursite.com/2017/03/27/JMX 获取MBean信息/index.html">
+<meta property="og:site_name" content="My Dream">
+<meta property="og:description" content="###  我们都知道JDK里边自带的 jmap 命令可以获取到 JVM 的内存信息。为了事实监控 JVM 的状态，需要在一定的周期内持续获取数据。 通过搜索，知道了 JMX（Java Management Extensions） JMX下载地址 jmx_example.zip下载地址  解压 jmx_example.zip： unzip jmx_examples.zip  编译com/exampl">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://github.com/leftwukaixing/leftwukaixing.github.io/blob/master/images/Snip20170213_4.png">
+<meta property="og:updated_time" content="2017-10-18T06:41:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JMX 获取MBean信息">
+<meta name="twitter:description" content="###  我们都知道JDK里边自带的 jmap 命令可以获取到 JVM 的内存信息。为了事实监控 JVM 的状态，需要在一定的周期内持续获取数据。 通过搜索，知道了 JMX（Java Management Extensions） JMX下载地址 jmx_example.zip下载地址  解压 jmx_example.zip： unzip jmx_examples.zip  编译com/exampl">
+<meta name="twitter:image" content="https://github.com/leftwukaixing/leftwukaixing.github.io/blob/master/images/Snip20170213_4.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="My Dream" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="My Dream" title="My Dream"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="My Dream">My Dream</a></h1>
+				<h2 class="blog-motto">Life isn&#39;t about waiting for the storm to pass,it&#39;s about learning to dance in the rain.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/27/JMX 获取MBean信息/" title="JMX 获取MBean信息" itemprop="url">JMX 获取MBean信息</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2017-03-27T08:40:56.000Z" itemprop="datePublished"> 发表于 2017-03-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>### </p>
+<p>我们都知道JDK里边自带的 jmap 命令可以获取到 JVM 的内存信息。为了事实监控 JVM 的状态，需要在一定的周期内持续获取数据。</p>
+<p>通过搜索，知道了 JMX（Java Management Extensions）</p>
+<p><a href="http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-java-plat-419418.html" target="_blank" rel="external">JMX下载地址</a></p>
+<p><a href="http://docs.oracle.com/javase/tutorial/jmx/examples/jmx_examples.zip" target="_blank" rel="external">jmx_example.zip下载地址</a></p>
+<ul>
+<li><p>解压 jmx_example.zip：</p>
+<pre><code>unzip jmx_examples.zip
+</code></pre></li>
+<li><p>编译com/example下的java程序：</p>
+<pre><code>javac com/example/*.java
+</code></pre></li>
+<li><p>运行Main：</p>
+<pre><code>java -Dcom.sun.management.jmxremote.port=9999 \
+-Dcom.sun.management.jmxremote.authenticate=false \
+-Dcom.sun.management.jmxremote.ssl=false \
+com/example/Main
+</code></pre><p>  注：-Dcom.sun.management.jmxremote.port 是为了指定需要远程监控时获取数据的端口。</p>
+<p>  -Dcom.sun.management.jmxremote.authenticate=false 是指定是否需要验证。</p>
+<p>  -Dcom.sun.management.jmxremote.ssl=false 通过SSL方式访问。</p>
+</li>
+<li><p>在远程终端通过 JDK 自带的 jconsole 查看：</p>
+<pre><code>jconsole
+</code></pre><p>  然后就可以看到如图所示的界面：</p>
+<p>  <img src="https://github.com/leftwukaixing/leftwukaixing.github.io/blob/master/images/Snip20170213_4.png" alt=""></p>
+<p>  在远程地址中输入IP:port后，点击连接就可以看到如下界面：</p>
+</li>
+<li><p>通过 jmx client 方式获取 MBEAN ，例如获取Threading BEAN 下的DaemonThreadCount：</p>
+<pre><code>java -jar jmxclient.jar - localhost:9999 java.lang:type=Threading DaemonThreadCount
+</code></pre></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2017/03/27/JMX 获取MBean信息/" data-title="JMX 获取MBean信息 | My Dream" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/03/28/Kubernets 学习记录-two/" title="Kubernets 学习记录-two">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Kubernets 学习记录-two</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/03/27/Leetcode 练习——Remove Element/"  title="Leetcode 练习——Remove Element">
+ <strong>下一篇：</strong><br/> 
+ <span>Leetcode 练习——Remove Element
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="leftwukaixing" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/leftwukaixing" target="_blank" title="My CSDN Blog">My CSDN Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=5263214599&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Wu Kaixing Page in Eleme.innc. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/5263214599" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/leftwukaixing" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/leftwukaixing" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:944862361@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Wu Kaixing">Wu Kaixing</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

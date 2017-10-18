@@ -1,0 +1,602 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>MapReduce简介 | My Dream</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Wu Kaixing">
+    
+
+    
+    <meta name="description" content="定义是一种用于大规模数据集（大于1TB）并行计算的编程模型。当前的软件实现是指定一个Map(映射)函数，用来把一组key-value pair（键值对）映射成一组新的key-value pair，指定并发的Reduce函数，用来保证所有的映射的key-value pair中的每一个共享相同的键组。
+映射和化简
+映射（Map）函数：对一些独立元素组成的概念上的列表中的每一个元素进行指定的操作。Map">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MapReduce简介">
+<meta property="og:url" content="http://yoursite.com/2016/04/02/MapReduce简介/index.html">
+<meta property="og:site_name" content="My Dream">
+<meta property="og:description" content="定义是一种用于大规模数据集（大于1TB）并行计算的编程模型。当前的软件实现是指定一个Map(映射)函数，用来把一组key-value pair（键值对）映射成一组新的key-value pair，指定并发的Reduce函数，用来保证所有的映射的key-value pair中的每一个共享相同的键组。
+映射和化简
+映射（Map）函数：对一些独立元素组成的概念上的列表中的每一个元素进行指定的操作。Map">
+<meta property="og:image" content="http://i.imgur.com/qan28nf.jpg">
+<meta property="og:updated_time" content="2016-04-11T02:16:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MapReduce简介">
+<meta name="twitter:description" content="定义是一种用于大规模数据集（大于1TB）并行计算的编程模型。当前的软件实现是指定一个Map(映射)函数，用来把一组key-value pair（键值对）映射成一组新的key-value pair，指定并发的Reduce函数，用来保证所有的映射的key-value pair中的每一个共享相同的键组。
+映射和化简
+映射（Map）函数：对一些独立元素组成的概念上的列表中的每一个元素进行指定的操作。Map">
+<meta name="twitter:image" content="http://i.imgur.com/qan28nf.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="My Dream" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/logo.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="My Dream" title="My Dream"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="My Dream">My Dream</a></h1>
+				<h2 class="blog-motto">Life isn&#39;t about waiting for the storm to pass,it&#39;s about learning to dance in the rain.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/04/02/MapReduce简介/" title="MapReduce简介" itemprop="url">MapReduce简介</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-02T00:03:46.000Z" itemprop="datePublished"> 发表于 2016-04-02</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-number">1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#映射和化简"><span class="toc-number">2.</span> <span class="toc-text">映射和化简</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行过程"><span class="toc-number">3.</span> <span class="toc-text">执行过程</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>是一种用于大规模数据集（大于1TB）并行计算的编程模型。当前的软件实现是指定一个Map(映射)函数，用来把一组key-value pair（键值对）映射成一组新的key-value pair，指定并发的Reduce函数，用来保证所有的映射的key-value pair中的每一个共享相同的键组。</p>
+<h2 id="映射和化简"><a href="#映射和化简" class="headerlink" title="映射和化简"></a>映射和化简</h2><ul>
+<li>映射（Map）函数：对一些独立元素组成的概念上的列表中的每一个元素进行指定的操作。Map操作是高度可并行的，对高性能要求的应用以及并行计算领域的需求非常有用。</li>
+<li>化简（Reduce）函数：遍历集合中的元素，进行适当的合并，返回一个综合的结果。</li>
+</ul>
+<h2 id="执行过程"><a href="#执行过程" class="headerlink" title="执行过程"></a>执行过程</h2><p><img src="http://i.imgur.com/qan28nf.jpg" alt=""></p>
+<p>从最上方的user program开始的，user program链接了MapReduce库，实现了最基本的Map函数和Reduce函数。图中执行的顺序都用数字标记了。</p>
+<ol>
+<li>MapReduce库先把user program的输入文件划分为M份（M为用户定义），每一份通常有16MB到64MB，如图左方所示分成了split0~4；然后使用fork将用户进程拷贝到集群内其它机器上。</li>
+<li>user program的副本中有一个称为master，其余称为worker，master是负责调度的，为空闲worker分配作业（Map作业或者Reduce作业），worker的数量也是可以由用户指定的。</li>
+<li>被分配了Map作业的worker，开始读取对应分片的输入数据，Map作业数量是由M决定的，和split一一对应；Map作业从输入数据中抽取出键值对，每一个键值对都作为参数传递给map函数，map函数产生的中间键值对被缓存在内存中。</li>
+<li>缓存的中间键值对会被定期写入本地磁盘，而且被分为R个区，R的大小是由用户定义的，将来每个区会对应一个Reduce作业；这些中间键值对的位置会被通报给master，master负责将信息转发给Reduce worker。</li>
+<li>master通知分配了Reduce作业的worker它负责的分区在什么位置（肯定不止一个地方，每个Map作业产生的中间键值对都可能映射到所有R个不同分区），当Reduce worker把所有它负责的中间键值对都读过来后，先对它们进行排序，使得相同键的键值对聚集在一起。因为不同的键可能会映射到同一个分区也就是同一个Reduce作业（谁让分区少呢），所以排序是必须的。</li>
+<li>reduce worker遍历排序后的中间键值对，对于每个唯一的键，都将键与关联的值传递给reduce函数，reduce函数产生的输出会添加到这个分区的输出文件中。</li>
+<li>当所有的Map和Reduce作业都完成了，master唤醒正版的user program，MapReduce函数调用返回user program的代码。</li>
+</ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/编程模型/">编程模型</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/编程模型/">编程模型</a><a href="/tags/计算框架/">计算框架</a><a href="/tags/并行计算/">并行计算</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/04/02/MapReduce简介/" data-title="MapReduce简介 | My Dream" data-tsina="5263214599" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/04/21/面试笔试算法-字符串变形/" title="面试笔试算法-字符串变形">
+  <strong>上一篇：</strong><br/>
+  <span>
+  面试笔试算法-字符串变形</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/04/01/Struts2核心技术--拦截器/"  title="Struts2核心技术--拦截器">
+ <strong>下一篇：</strong><br/> 
+ <span>Struts2核心技术--拦截器
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-number">1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#映射和化简"><span class="toc-number">2.</span> <span class="toc-text">映射和化简</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行过程"><span class="toc-number">3.</span> <span class="toc-text">执行过程</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="leftwukaixing" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Java/" title="Java">Java<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/SSH框架/" title="SSH框架">SSH框架<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法/" title="算法">算法<sup>13</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程模型/" title="编程模型">编程模型<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/网络/" title="网络">网络<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>23</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/排序/" title="排序">排序<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JVM/" title="JVM">JVM<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/链表/" title="链表">链表<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/框架/" title="框架">框架<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Struts2/" title="Struts2">Struts2<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/集合/" title="集合">集合<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/算法/" title="算法">算法<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/树/" title="树">树<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/二叉树/" title="二叉树">二叉树<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/查找/" title="查找">查找<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JavaEE/" title="JavaEE">JavaEE<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/线程/" title="线程">线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/线程池/" title="线程池">线程池<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/并发/" title="并发">并发<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/引用/" title="引用">引用<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/编程模型/" title="编程模型">编程模型<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/计算框架/" title="计算框架">计算框架<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/并行计算/" title="并行计算">并行计算<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/leftwukaixing" target="_blank" title="My CSDN Blog">My CSDN Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=5263214599&verifier=03b040cc&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Wu Kaixing in China. <br/>
+			This is my blog, believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/5263214599" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/leftwukaixing" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:leftwukaixing@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Wu Kaixing">Wu Kaixing</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

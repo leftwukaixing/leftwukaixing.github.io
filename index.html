@@ -1,0 +1,590 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>My Dream</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Wu Kaixing">
+    
+
+    
+    <meta name="description" content="Life isn&apos;t about waiting for the storm to pass,it&apos;s about learning to dance in the rain.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="My Dream">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="My Dream">
+<meta property="og:description" content="Life isn&apos;t about waiting for the storm to pass,it&apos;s about learning to dance in the rain.">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="My Dream">
+<meta name="twitter:description" content="Life isn&apos;t about waiting for the storm to pass,it&apos;s about learning to dance in the rain.">
+
+    
+    <link rel="alternative" href="/atom.xml" title="My Dream" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="My Dream" title="My Dream"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="My Dream">My Dream</a></h1>
+				<h2 class="blog-motto">Life isn&#39;t about waiting for the storm to pass,it&#39;s about learning to dance in the rain.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/28/Kubernets 学习记录-two/" title="Kubernets 学习记录-two" itemprop="url">Kubernets 学习记录-two</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2017-03-28T01:43:19.000Z" itemprop="datePublished"> 发表于 2017-03-28</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Kubectl-命令"><a href="#Kubectl-命令" class="headerlink" title="Kubectl 命令"></a>Kubectl 命令</h2><h3 id="kubectl-get-Display-one-or-many-resources"><a href="#kubectl-get-Display-one-or-many-resources" class="headerlink" title="kubectl get : Display one or many resources."></a>kubectl get : Display one or many resources.</h3><h4 id="example"><a href="#example" class="headerlink" title="example :"></a>example :</h4><pre><code>kubectl get pods
+</code></pre><p>获取~/.kube/config中配置的以 <code>user</code> 登录的 <code>namaspace</code> 下的所有 pod 。</p>
+<pre><code>kubectl get pods -o wide
+</code></pre><p>List all pods in ps output format with more information (such as node name).</p>
+<pre><code>kubectl get services` or `kubectl get svc
+</code></pre><p>List all services.</p>
+<pre><code>kubectl get -o json pod wkx-pod-2080863796-awf64
+</code></pre><p>以json格式显示 wkx-pod-2080863796-awf64 的信息。</p>
+<h3 id="kubectl-create-Create-a-resource-by-filename-or-stdin"><a href="#kubectl-create-Create-a-resource-by-filename-or-stdin" class="headerlink" title="kubectl create : Create a resource by filename or stdin."></a>kubectl create : Create a resource by filename or stdin.</h3><h4 id="example-1"><a href="#example-1" class="headerlink" title="example :"></a>example :</h4><pre><code>kubectl create -f a.yaml
+</code></pre><p>根据 a.yaml 文件创建 resource 。</p>
+<h3 id="kubectl-edit-Edit-a-resource-on-the-server"><a href="#kubectl-edit-Edit-a-resource-on-the-server" class="headerlink" title="kubectl edit : Edit a resource on the server."></a>kubectl edit : Edit a resource on the server.</h3><h4 id="example-2"><a href="#example-2" class="headerlink" title="example :"></a>example :</h4><pre><code>kubectl edit pod wkx-pod-2080863796-awf64
+</code></pre><p>对 wkx-pod-2080863796-awf64 进行修改。kubernets 将以滚动升级的方式更新修改。</p>
+<h3 id="kubectl-delete-Delete-resources-by-filenames-stdin-resources-and-names-or-by-resources-and-label-selector"><a href="#kubectl-delete-Delete-resources-by-filenames-stdin-resources-and-names-or-by-resources-and-label-selector" class="headerlink" title="kubectl delete : Delete resources by filenames, stdin, resources and names, or by resources and label selector."></a>kubectl delete : Delete resources by filenames, stdin, resources and names, or by resources and label selector.</h3><h4 id="example-3"><a href="#example-3" class="headerlink" title="example :"></a>example :</h4><pre><code>kubectl delete -f a.yaml
+</code></pre><p>将之前根据a.yaml文件创建的 resource 删除。</p>
+<pre><code>kubectl delete pod wkx-pod-2080863796-awf64
+</code></pre><p>删除名为 wkx-pod-2080863796-awf64 的 pod 。</p>
+<h3 id="kubectl-describe-Show-details-of-a-specific-resource-or-group-of-resources"><a href="#kubectl-describe-Show-details-of-a-specific-resource-or-group-of-resources" class="headerlink" title="kubectl describe : Show details of a specific resource or group of resources."></a>kubectl describe : Show details of a specific resource or group of resources.</h3><h4 id="example-4"><a href="#example-4" class="headerlink" title="example :"></a>example :</h4><pre><code>kubectl describe pods
+</code></pre><p>显示所有的 pod 的信息。</p>
+<pre><code>kubectl describe pods -l app=test
+</code></pre><p>显示 label app=test 的 pod 的信息。</p>
+<h3 id="kubectl-run-Run-a-particular-image-on-the-cluster"><a href="#kubectl-run-Run-a-particular-image-on-the-cluster" class="headerlink" title="kubectl run : Run a particular image on the cluster."></a>kubectl run : Run a particular image on the cluster.</h3><h4 id="example-5"><a href="#example-5" class="headerlink" title="example :"></a>example :</h4><pre><code>kubectl run gobuilder --image=docker/kaixing.wu/golang:1.7.4
+</code></pre><p>运行一个 docker/kaixing.wu/golang:1.7.4 的实例。</p>
+<h3 id="kubectl-exec-Execute-a-command-in-a-container"><a href="#kubectl-exec-Execute-a-command-in-a-container" class="headerlink" title="kubectl exec : Execute a command in a container."></a>kubectl exec : Execute a command in a container.</h3><h4 id="example-6"><a href="#example-6" class="headerlink" title="example :"></a>example :</h4><pre><code>kubectl exec -it gobuilder-998763582-15gvi bash
+</code></pre><p>以 bash 的形式进入 gobuilder-998763582-15gvi 这个 pod 。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/27/JMX 获取MBean信息/" title="JMX 获取MBean信息" itemprop="url">JMX 获取MBean信息</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2017-03-27T08:40:56.000Z" itemprop="datePublished"> 发表于 2017-03-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>### </p>
+<p>我们都知道JDK里边自带的 jmap 命令可以获取到 JVM 的内存信息。为了事实监控 JVM 的状态，需要在一定的周期内持续获取数据。</p>
+<p>通过搜索，知道了 JMX（Java Management Extensions）</p>
+<p><a href="http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-java-plat-419418.html" target="_blank" rel="external">JMX下载地址</a></p>
+<p><a href="http://docs.oracle.com/javase/tutorial/jmx/examples/jmx_examples.zip" target="_blank" rel="external">jmx_example.zip下载地址</a></p>
+<ul>
+<li><p>解压 jmx_example.zip：</p>
+<pre><code>unzip jmx_examples.zip
+</code></pre></li>
+<li><p>编译com/example下的java程序：</p>
+<pre><code>javac com/example/*.java
+</code></pre></li>
+<li><p>运行Main：</p>
+<pre><code>java -Dcom.sun.management.jmxremote.port=9999 \
+-Dcom.sun.management.jmxremote.authenticate=false \
+-Dcom.sun.management.jmxremote.ssl=false \
+com/example/Main
+</code></pre><p>  注：-Dcom.sun.management.jmxremote.port 是为了指定需要远程监控时获取数据的端口。</p>
+<p>  -Dcom.sun.management.jmxremote.authenticate=false 是指定是否需要验证。</p>
+<p>  -Dcom.sun.management.jmxremote.ssl=false 通过SSL方式访问。</p>
+</li>
+<li><p>在远程终端通过 JDK 自带的 jconsole 查看：</p>
+<pre><code>jconsole
+</code></pre><p>  然后就可以看到如图所示的界面：</p>
+<p>  <img src="https://github.com/leftwukaixing/leftwukaixing.github.io/blob/master/images/Snip20170213_4.png" alt=""></p>
+<p>  在远程地址中输入IP:port后，点击连接就可以看到如下界面：</p>
+</li>
+<li><p>通过 jmx client 方式获取 MBEAN ，例如获取Threading BEAN 下的DaemonThreadCount：</p>
+<pre><code>java -jar jmxclient.jar - localhost:9999 java.lang:type=Threading DaemonThreadCount
+</code></pre></li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/27/Leetcode 练习——Remove Element/" title="Leetcode 练习——Remove Element" itemprop="url">Leetcode 练习——Remove Element</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2017-03-27T08:40:43.000Z" itemprop="datePublished"> 发表于 2017-03-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>Given an array and a value, remove all instances of that &gt; value in place and return the new length.</p>
+<p>The order of elements can be changed. It doesn’t matter what you leave beyond the new length.</p>
+<h3 id="输入例子："><a href="#输入例子：" class="headerlink" title="输入例子："></a>输入例子：</h3><p>[1,2,2,3,2,4]</p>
+<p> 2</p>
+<h3 id="输出结果："><a href="#输出结果：" class="headerlink" title="输出结果："></a>输出结果：</h3><p>3</p>
+<h3 id="解决思路："><a href="#解决思路：" class="headerlink" title="解决思路："></a>解决思路：</h3><h3 id="Java实现："><a href="#Java实现：" class="headerlink" title="Java实现："></a>Java实现：</h3><pre><code>public Class Solution{
+    public static int removeElement(int arr[], int elem){
+        int res = 0 ;
+        for(int i = 0 ; i &lt; arr.length() ; i ++ ) {
+            if (arr[i] == elem) {
+                continue;
+            }
+            arr[res] = arr[i];
+            res++;
+        }
+        return res;
+    }
+}
+</code></pre><h3 id="GoLang实现："><a href="#GoLang实现：" class="headerlink" title="GoLang实现："></a>GoLang实现：</h3><pre><code>func Solution(arr []int ,elem int) int {
+    res := 0
+    for i := 0; i &lt; len(arr); i++ {
+        if arr[i] == elem {
+            continue
+        }
+        arr[res] = arr[i]
+        res++
+    }
+    return res
+}
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/27/kubernets 学习记录-one/" title="kubernets 学习记录-one" itemprop="url">kubernets 学习记录-one</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wu Kaixing" target="_blank" itemprop="author">Wu Kaixing</a>
+		
+  <p class="article-time">
+    <time datetime="2017-03-27T08:21:12.000Z" itemprop="datePublished"> 发表于 2017-03-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="kubernets-组件简介"><a href="#kubernets-组件简介" class="headerlink" title="kubernets 组件简介"></a>kubernets 组件简介</h2><h4 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a><em>Cluster</em></h4><p>Kubernetes用于运行应用程序的一组物理或虚拟机以及其他基础架构资源。</p>
+<h4 id="Node"><a href="#Node" class="headerlink" title="Node"></a><em>Node</em></h4><p>运行Kubernetes的物理或虚拟机。里面可以运行pod。</p>
+<h4 id="Pod"><a href="#Pod" class="headerlink" title="Pod"></a><em>Pod</em></h4><p>一个共同组合的 container 和 volume。</p>
+<h4 id="Label"><a href="#Label" class="headerlink" title="Label"></a><em>Label</em></h4><p>附加到资源（例如pod）的键/值对，以传达用户定义的标识属性。标签可用于组织和选择资源子集。</p>
+<h4 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a><em>Selector</em></h4><p>匹配标签的表达式，以便识别相关资源，例如负载均衡服务定位哪个pod。</p>
+<h4 id="Replication-Controller"><a href="#Replication-Controller" class="headerlink" title="Replication Controller"></a><em>Replication Controller</em></h4><p>可确保任意一个时间运行指定数量的pod副本。它允许轻松缩放Replication Controller，并在机器重新启动或以其他方式失败时处理pod的重新创建。</p>
+<h4 id="Service"><a href="#Service" class="headerlink" title="Service"></a><em>Service</em></h4><p>定义一组pod和一个访问它们的方法，例如单个稳定的IP地址和相应的DNS名称。</p>
+<h4 id="Volumn"><a href="#Volumn" class="headerlink" title="Volumn"></a><em>Volumn</em></h4><p>一个目录，可能包含一些数据，容器作为其文件系统的一部分可访问。Kubernetes卷基于Docker Volumes，添加了卷目录和/或设备的配置。</p>
+<ul>
+<li>注：在Kubernets中，Volumn的挂载是挂载整个目录，而Docker在docker run -v 挂载可以挂载文件。</li>
+</ul>
+<h4 id="Secret"><a href="#Secret" class="headerlink" title="Secret"></a><em>Secret</em></h4><p>存储敏感数据，例如身份验证令牌，可根据要求向容器提供。</p>
+<h4 id="Name"><a href="#Name" class="headerlink" title="Name"></a><em>Name</em></h4><p>用户或客户端提供的资源名称。</p>
+<h4 id="Namespace"><a href="#Namespace" class="headerlink" title="Namespace"></a><em>Namespace</em></h4><p>Namespace就像资源名称的前缀。命名空间可帮助不同的项目，团队或客户共享集群，例如通过防止不相关的团队之间的名称冲突。</p>
+<h4 id="Annotation"><a href="#Annotation" class="headerlink" title="Annotation"></a><em>Annotation</em></h4><p>可以容纳较大的（与Label相比）以及可能不是人类可读的数据的键/值对，主要用于存储非识别辅助数据，特别是由工具和系统扩展所操纵的数据。不支持通过注释值进行高效过滤。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="leftwukaixing" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/leftwukaixing" target="_blank" title="My CSDN Blog">My CSDN Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=5263214599&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Wu Kaixing Page in Eleme.innc. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/5263214599" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/leftwukaixing" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/leftwukaixing" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:944862361@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Wu Kaixing">Wu Kaixing</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>
